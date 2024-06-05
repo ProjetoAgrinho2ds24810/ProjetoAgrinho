@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interativo</title>
+    <link rel="stylesheet" href="Quizz.css">
+</head>
+<body>
+    <header>
+        <h1 class="Voltar", style="text-align: left;"><a href="Principal.html">Voltar</a></h1>
+        <h1>Quiz sobre Tecnologia na Agricultura</h1>
+    </header>
+    <main>
+        <section id="quiz">
+            <form>
+                <div class="question">
+                    <h3>1. Qual destas tecnologias é usada para monitorar a saúde do solo?</h3>
+                    <label>
+                        <input type="radio" name="q1" value="a">
+                        Drones
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="b">
+                        Sensores de Solo
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="c">
+                        Tratores Automatizados
+                    </label>
+                </div>
+
+                <div class="question">
+                    <h3>2. Qual tecnologia permite a irrigação controlada e eficiente?</h3>
+                    <label>
+                        <input type="radio" name="q2" value="a">
+                        GPS Agrícola
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="b">
+                        Sistemas de Irrigação Automatizados
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="c">
+                        Sensores de Clima
+                    </label>
+                </div>
+
+                <div class="question">
+                    <h3>3. Qual destes é um benefício da agricultura de precisão?</h3>
+                    <label>
+                        <input type="radio" name="q3" value="a">
+                        Maior uso de água
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="b">
+                        Menor produtividade
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="c">
+                        Redução de custos e aumento de produtividade
+                    </label>
+                </div>
+
+                <button type="button" onclick="mostrarResultado()">Ver Resultado</button>
+            </form>
+            <div id="resultado" style="display: none;">
+                <h3>Seu resultado:</h3>
+                <p id="resultado-texto"></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function mostrarResultado() {
+            const respostasCorretas = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'c'
+            };
+
+            let pontuacao = 0;
+            const respostas = document.querySelectorAll('input[type="radio"]:checked');
+
+            respostas.forEach((resposta) => {
+                if (respostasCorretas[resposta.name] === resposta.value) {
+                    pontuacao++;
+                }
+            });
+
+            const resultadoTexto = document.getElementById('resultado-texto');
+            resultadoTexto.textContent = `Você acertou ${pontuacao} de 3 perguntas.`;
+
+            document.getElementById('resultado').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
